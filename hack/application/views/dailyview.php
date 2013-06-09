@@ -1,6 +1,42 @@
 
     <script language="javascript" type="text/javascript" src="<?php echo $this->config->base_url(); ?>javascript/jquery.js"></script>
     <script language="javascript" type="text/javascript" src="<?php echo $this->config->base_url(); ?>javascript/jquery.flot.js"></script>
+
+
+<script type="text/JavaScript">
+<!--
+function timedRefresh(timeoutPeriod) {
+	setTimeout("location.reload(true);",timeoutPeriod);
+}
+
+
+
+var count=60;
+
+var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+
+function timer()
+{
+  count=count-1;
+  if (count <= 0)
+  {
+     clearInterval(counter);
+     return;
+  }
+
+ document.getElementById("timer").innerHTML=count + " secs"; // watch for spelling
+}
+
+
+
+
+//   -->
+</script>
+
+
+
+
+
 <script type="text/javascript">
 $(function () {
     
@@ -58,7 +94,7 @@ $(function () {
         
     
     $.plot($("#placeholder"), [
-        { label: "Kw/H Generated",  data: d4}
+        { label: "Watt Generated",  data: d4}
        // { label: "Kw/H Consumed",  data: d6}
     ], 
     
@@ -97,7 +133,7 @@ $(function () {
 <head>
 <title>Key Form</title>
 </head>
-<body>
+<body onload="JavaScript:timedRefresh(60000);">
 
 
 
@@ -141,10 +177,27 @@ echo '&nbsp;&nbsp;&nbsp;';
 echo form_dropdown('dayinput', $dropdays, $daychosen);
 echo '&nbsp;&nbsp;&nbsp;';
 echo form_submit('viewchartsort','View Chart');
-echo '<br />';
-echo '<br />';
+
+
+
+echo '<div class="leanright">';
+
+
+echo 'Next Report in <span id="timer"></span>';
+
+echo ' / ';
+
+echo '<span class="wattsaved">';
+echo number_format($energytotal,2). ' Watthours Saved';
+echo '</span>';
+
+
+echo '</div>';
+
 
 echo form_close();
+
+
 
 ?>
 

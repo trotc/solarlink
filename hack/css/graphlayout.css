@@ -499,7 +499,16 @@ text-decoration: underline;
 font-family: Arial; 
 font-size: 80%;
 }
-    
+
+.leanright
+{
+padding: 0px 0px 0px 0px;
+float: left;
+width: 100px;
+background-color: red;
+}
+
+
 
 
 </style>';

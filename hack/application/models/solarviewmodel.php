@@ -3,6 +3,27 @@
 class Solarviewmodel extends CI_Model {
 
 
+	function wattsaved($userid)
+	{
+		$this->db->select_sum('energy_stored');
+		$this->db->where('user_id',$userid);
+		$query = $this->db->get('entries');
+		
+		if($query->num_rows() > 0)
+		{
+			$data = $query->result();
+			return $data;
+		}
+		
+		
+		
+	}
+
+
+
+
+
+
 		function getlatestentry($userid)
 	{
 		$this->db->order_by('entry_id','desc');

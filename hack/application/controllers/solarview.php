@@ -77,6 +77,17 @@ class Solarview extends CI_Controller {
 		
 		
 		
+		$wattshow = $this->solarviewmodel->wattsaved('1');
+		
+		
+		$energystored = $wattshow[0]->energy_stored;
+		
+		$data['energytotal'] = $energystored / 60;
+		
+		
+		//print_r($wattshow);
+		
+		
 		$viewchatsort = $this->input->post('viewchartsort');
 		$yearinput = $this->input->post('yearinput');
 		$monthinput = $this->input->post('monthinput');
@@ -203,7 +214,7 @@ class Solarview extends CI_Controller {
 		//print_r($data['records']);
 		
 		
-		
+		/*
 		foreach($data['records'] as $row)
 		{
 			echo $row->entry_number;
@@ -213,6 +224,7 @@ class Solarview extends CI_Controller {
 			//echo $row->energy_used;
 			echo '<br />';
 		}
+		*/
 		
 		
 		
@@ -245,6 +257,17 @@ class Solarview extends CI_Controller {
 	public function monthlyview()
 	{
 		$this->load->model('solarviewmodel');
+		
+		
+		
+			$wattshow = $this->solarviewmodel->wattsaved('1');
+		
+		
+		$energystored = $wattshow[0]->energy_stored;
+		
+		$data['energytotal'] = $energystored / 60;
+		
+		
 		
 		
 		$viewchatsort = $this->input->post('viewchartsort');
@@ -378,6 +401,19 @@ class Solarview extends CI_Controller {
 		$yearinput = $this->input->post('yearinput');
 		$monthinput = $this->input->post('monthinput');
 		$dayinput = $this->input->post('dayinput');
+		
+		
+		
+		
+			$wattshow = $this->solarviewmodel->wattsaved('1');
+		
+		
+		$energystored = $wattshow[0]->energy_stored;
+		
+		$data['energytotal'] = $energystored / 60;
+		
+		
+		
 		
 		
 		//$userid = $this->session->userdata('userid');
